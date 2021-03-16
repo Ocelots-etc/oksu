@@ -25,7 +25,7 @@ ActiveRecord::Schema.define(version: 2021_03_11_014223) do
     t.text "comments"
     t.datetime "datetime"
     t.integer "user_id", null: false
-    t.integer "admin_id", null: false
+    t.integer "admin_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["admin_id"], name: "index_appointments_on_admin_id"

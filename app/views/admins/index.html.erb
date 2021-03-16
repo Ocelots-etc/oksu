@@ -1,0 +1,8 @@
+<h1>Our Sisters' Keepers</h1>
+<ul>
+  <% @admins.each do |a| %>
+    <li>
+      <%= link_to a.name, admin_path(a) %>
+    </li>
+  <% end %>
+</ul>

@@ -1,0 +1,22 @@
+  <br />
+  <br />
+  <%= form_for @appt do |f| %>
+
+    <%= f.label :location %>
+    <%= f.text_field :location %>
+    <br />
+
+    <%= f.label :datetime %>
+    <%= f.datetime_local_field :datetime %>
+    <br />
+
+    <%= f.label :comments %>
+    <%= f.text_area :comments %>
+    <br />
+
+    <%= f.label :admin %>
+    <%= f.text_area :admin %>
+    <br />
+
+    <%= f.submit %>
+  <% end %>

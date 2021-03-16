@@ -1,0 +1,12 @@
+<h1>Appointments with Our Sisters' Keepers</h1>
+<ul>
+  <% @appts.each do |a| %>
+    <li>
+      <%= link_to a.location, appointment_path(a) %>
+      <br>
+      <%= a.comments %>
+      <br>
+      <%= a.datetime %>
+    </li>
+  <% end %>
+</ul>
