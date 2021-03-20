@@ -1,7 +1,90 @@
-  <%= form_for @toolkit  do |f| %>
-    <%= f.label :name %>
-    <%= f.text_field :name %>
+<h1> Toolkit List </h1>
+<h4> Please complete the following list for Our Sisters' Keepers to better assist you. </h4>
+  <%= form_for @tool  do |f| %>
+    <%= f.label :legal %>
+    <h5> This category covers anything from your recent 
     <br />
+    incarceration, probation, and any other legal matters 
+    <br />
+    you may currently face or may face in the future. 
+    <br />
+     Please detail below your legal needs, 
+    <br />
+    but if you do not need anything in this area, type n/a.</h5>
+    <%= f.text_area :legal %>
+    <br />
+    <%= f.label :documents %>
+    <h5> This category covers anything from your drivers'  
+    <br />
+    license, birth certificate, and any other documents which  
+    <br />
+    you may require now or in the future. 
+    <br />
+    Please detail below your document needs:</h5>
+    <%= f.text_area :documents %>
+    <br />
+    <%= f.label :job, as: "Employment" %>
+    <h5> This category covers anything from your getting   
+    <br />
+    a job, unemployment, and any other employment needs which  
+    <br />
+    you may require now or in the future. 
+    <br />
+    Please detail below your employment needs, 
+    <br />
+    but if you do not need anything in this area, type n/a.</h5>
+    <%= f.text_area :job %>
+    <br />
+    <%= f.label :housing %>
+    <h5> This category covers anything from your IOP,
+    <br />
+    inpatient housing, and any other housing needs which  
+    <br />
+    you may require now or in the future. 
+    <br />
+    Please detail below your housing needs, 
+    <br />
+    but if you do not need anything in this area, type n/a.</h5>
+    <%= f.text_area :housing %>
+    <br />
+    <%= f.label :financial %>
+    <h5> This category covers anything from getting a bank account,
+    <br />
+    budgeting, and any other financial needs which  
+    <br />
+    you may require now or in the future. 
+    <br />
+    Please detail below your financial needs, 
+    <br />
+    but if you do not need anything in this area, type n/a.</h5>
+    <%= f.text_area :financial %>
+    <br />
+    <%= f.label :childcare %>
+    <h5> This category covers anything from the number of children  
+    <br />
+    you have, their ages, names, DCS matters, and any other
+    <br />
+    childcare needs which you may require now or in the future. 
+    <br />
+    Please detail below your document needs, 
+    <br />
+    but if you do not need anything in this area, type n/a.</h5>
+    <%= f.text_area :childcare %>
+    <br />
+    <%= f.label :health %>
+    <h5> This category covers anything from your health
+    <br />
+    concerns, birth control, glasses, and any other healthcare needs which  
+    <br />
+    you may require now or in the future. 
+    <br />
+    Please detail below your healthcare needs, 
+    <br />
+    but if you do not need anything in this area, type n/a.</h5>
+    <%= f.text_area :health %>
+    <br />
+    <br />
+
 
     <%= f.submit %>
   <% end %>

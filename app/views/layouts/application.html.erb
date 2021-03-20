@@ -10,6 +10,29 @@
   </head>
 
   <body>
-    <%= yield %>
-  </body>
+<br />
+<br />
+<br />
+  <div id="Hello_user">
+    <% if logged_in_user? %>
+    <span>Hi, <%= current_user.name %>!
+    <%= button_to "Logout", logout_path, method: :POST %>
+     </span>
+  <% elsif logged_in_admin? %>
+     <span>Hi, <%= current_admin.name %>!
+    <%= button_to "Logout", logout_path, method: :POST %>
+     </span>
+  <% else %>
+    <%= button_to "Sign Up", signup_path, method: :get  %>
+    <%= button_to "Login", login_path, method: :get  %>   
+
+  <% end %>
+  </div>
+
+
+      
+        <%= yield %>
+
+      
+    </body>
 </html>

@@ -1,1 +1,30 @@
 <h1><%= @admin.name %></h1>
+<h4>This is your dashboard to view all of your appointments among other things.</h4>
+<%= button_to "Edit Admin's Information", edit_admin_path, method: :get %>
+<h2> Appointments </h2>
+<%= button_to "Create a new Appointment", new_appointment_path, method: :get %>
+<h4> The following is a list of your scheduled appointments: </h4>
+<% if current_admin.appointments != nil %>
+  <% current_admin.appointments.each do |a| %>
+  <br />
+  <%= link_to a.user.name, user_path(a.user.id) %>
+  <br />
+  
+  <%= link_to a.location, appointment_path(a) %>
+  <br />
+  <%= a.datetime %>
+  <br />
+  <%= a.comments %>
+   <br />
+     <br />
+
+  <% end %>
+
+  
+<% end %>
+ <br />
+<h2> Link to Users </h2>
+  <br />
+  <%= button_to "View Users", users_path(@users), method: :get %>
+  <%= button_to "View All Appointments", appointments_path(@appts), method: :get %>
+

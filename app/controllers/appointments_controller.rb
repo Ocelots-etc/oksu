@@ -1,43 +1,56 @@
 class AppointmentsController < ApplicationController
-before_action :set_appt, only: [:show, :create]
+
+  before_action :set_appt, only: [:show, :update, :destroy, :edit]
+  before_action :set_user, only: [:show, :update, :destroy, :edit]
+
+  # before_action :redirect_if_not_logged_in
 
   def new
     @appt = Appointment.new
+    @user = User.find_by(id: params[:id])
   end
 
   def show
-
+    # @appt = Appointment.find_by(id: params[:id])
   end
 
   def create
-    @appt = Appointment.new(appt_params)
-      
+    @admins = Admin.all
+    @appt = Appointment.new(appt_params)
     if @appt.save
-        redirect_to appointment_path(@appt)
+        redirect_to user_path(@user)
       else
         redirect_to new_appointment_path
       end
   end
 
   def index
-    @appts = Appointment.all
+    @appts = current_user.appointments
   end
 
   def edit
+    # @appt = Appointment.find_by(id: params[:id])
+  end
 
+  def update
+    if @appt
+      @appt.update(appt_params)
+      redirect_to user_path(@user)
+    end 
   end
 
   def destroy
-
+    @appt.destroy
+    redirect_to welcome_path
   end
 
   private
 
     def set_appt
-      @appt = Appointment.find_by_id(params[:id])
+      @appt = Appointments.find_by_id(params[:id])
     end
 
     def appt_params
-      params.require(:appointment).permit(:location, :comments, :datetime)
+      params.require(:appointment).permit(:location, :comments, :datetime, :admin_id)
     end
 end

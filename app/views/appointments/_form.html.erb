@@ -1,22 +1,28 @@
   <br />
   <br />
-  <%= form_for @appt do |f| %>
 
-    <%= f.label :location %>
-    <%= f.text_field :location %>
+  <%= form_for(@appt) do |f| %>
+
+    <div class="field">
+      <%= f.label :location %>
+      <%= f.text_field :location %>
+      <br />
+
+      <%= f.label :datetime %>
+      <%= f.datetime_local_field :datetime %>
+      <br />
+
+      <%= f.label :comments %>
+      <%= f.text_area :comments %>
+      <br />
+    </div>
+    <div class="field">
+    <span> Our Sisters' Keepers </span>
+      <%= f.fields_for(:admins) do |admin_form| %>
+      <%= admin_form.label :name %>
+      <% end %>  
+      <%= f.collection_select :admin_id, Admin.all, :id, :name %>
+    </div>
     <br />
-
-    <%= f.label :datetime %>
-    <%= f.datetime_local_field :datetime %>
-    <br />
-
-    <%= f.label :comments %>
-    <%= f.text_area :comments %>
-    <br />
-
-    <%= f.label :admin %>
-    <%= f.text_area :admin %>
-    <br />
-
     <%= f.submit %>
   <% end %>
