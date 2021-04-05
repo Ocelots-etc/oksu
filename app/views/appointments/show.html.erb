@@ -1,5 +1,11 @@
+<h1><%= "Appointment for #{@appt.user.name}." %></h1>
+
 <h1><%= @appt.location %></h1>
 <br>
 <%= @appt.comments %>
-<%= @appt.datetime %>
+<%= @appt.appt_datetime %>
 <%= button_to "Edit Your Appointment", edit_appointment_path, method: :get  %>
+
+<% if current_admin %>
+ <%= button_to "Back to your Dashboard", admin_dashboard_path, method: :get %>
+<% end %>

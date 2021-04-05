@@ -1,23 +1,27 @@
-<h1>Welcome, <%= @user.name %>. </h1>
+<% if current_user %>
+<h1>Welcome, <%= current_user.name %>. </h1>
+
 <%= button_to "Return to Welcome Page", welcome_path, method: :get %>
 <h4>This is your dashboard to view all of your appointments as well as your toolkit.</h4>
-
 <%= button_to "Edit Sister's Information", edit_user_path, method: :get %>
+<% end %>
 
 <h2> Appointments </h2>
+
+<% if current_admin %>
+<%= button_to "Create a new Appointment", new_admins_appointment_path, method: :get %>
+<% elsif current_user %>
 <%= button_to "Create a new Appointment", new_appointment_path, method: :get %>
+<% end %>
 
 <h4> The following is a list of your scheduled appointments: </h4>
 
 <% if current_admin %>
- <% binding.pry %>
- <%= button_to "Back to your Dashboard", admin_path(current_admin), method: :get %>
-
- <% @user.appointments.each do |a| %>
+ <% current_admin.appointments.each do |a| %>
   <br />
   <%= link_to a.location, appointment_path(a) %>
   <br />
-  <%= a.datetime %>
+  <%= a.appt_datetime %>
   <br />
   <%= a.comments %>
    <br />
@@ -28,7 +32,7 @@
   <br />
   <%= link_to a.location, appointment_path(a) %>
   <br />
-  <%= a.datetime %>
+  <%= a.appt_datetime.to_formatted_s(:long) %>
   <br />
   <%= a.comments %>
    <br />
@@ -38,7 +42,7 @@
 
   <br />
   <% else %>
-  <%= "You can now create a toolkit" %>
+
 <%= button_to "Create a Appointment", new_appointment_path, method: :get %>
 
   <% end %>
@@ -66,10 +70,14 @@
   <label> Health: </label>
   <%= current_user.toolkit.health %>
   <br />
-  <%= button_to "Edit your Toolkit", edit_toolkit_path(@user.toolkit), method: :get %>
-  <% else %>
+  <%= button_to "Edit your Toolkit", edit_toolkit_path, method: :get %>
+  <% elsif current_user %>
   <%= "You can now create a toolkit" %>
 <%= button_to "Create a Toolkit", new_toolkit_path, method: :get %>
-
+<% elsif current_admin %>
+<%= button_to "Create a Toolkit", new_admins_user_toolkit_path(@user.id), method: :get %>
   <% end %>
-
+<% if current_admin %>
+ <%= button_to "Back to your Dashboard", admin_dashboard_path, method: :get %>
+  <% end %>
+  

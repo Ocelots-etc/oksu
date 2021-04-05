@@ -1,9 +1,9 @@
 class ToolkitsController < ApplicationController
-
+  # before_action :set_user, only: [:show, :update, :destroy, :edit]
   before_action :set_toolkit, only: [:show, :update, :destroy, :edit]
 
   def new
-    @tool = Toolkit.new 
+    @tool = Toolkit.new     
   end
 
   def show
@@ -13,14 +13,10 @@ class ToolkitsController < ApplicationController
     @tool = current_user.build_toolkit(toolkit_params)
     if @tool.save
       session[:toolkit_id] = @tool.id
-      redirect_to user_path(current_user)
+      redirect_to dashboard_path
     else
-      redirect_to new_toolkit_path
+      render :new 
     end
-  end
-
-  def index
-    @tools = Toolkit.all
   end
 
   def edit
@@ -29,12 +25,11 @@ class ToolkitsController < ApplicationController
   def update
     if @tool
       current_user.toolkit.update(toolkit_params)
-      redirect_to user_path(current_user)
+      redirect_to dashboard_path
     else
       redirect_to edit_toolkit_path
     end 
   end
-
 
   def destroy
     @tool.destroy
@@ -48,6 +43,6 @@ class ToolkitsController < ApplicationController
   end
 
   def set_toolkit
-    @tool = Toolkit.find_by(id: params[:id])
+    @tool = current_user.toolkit
   end
 end

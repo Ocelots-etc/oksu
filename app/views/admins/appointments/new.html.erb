@@ -1,10 +1,14 @@
+<br />
+<br />
+<br />
+This is the new appointments for admins to use
   <br />
+
   <br />
-  
-<%= render partial: "/errors", locals: {obj: @appt} %>
+<%= render partial: "/errors", locals: {obj: @admin_appt} %>
 
 
-  <%= form_for(@appt) do |f| %>
+  <%= form_for(@admin_appt, url: admins_appointments_path) do |f| %>
 
     <div class="field">
       <%= f.label :location %>
@@ -20,11 +24,12 @@
       <br />
     </div>
     <div class="field">
-    <span> Our Sisters' Keepers </span>
-      <%= f.fields_for(:admins) do |admin_form| %>
-      <%= admin_form.label :name %>
+    <span> Sisters' </span>
+
+      <%= f.fields_for(:users) do |user_form| %>
+      <%= user_form.label :name %>
       <% end %>  
-      <%= f.collection_select :admin_id, Admin.all, :id, :name %>
+      <%= f.collection_select :user_id, User.all, :id, :name %>
     </div>
     <br />
     <%= f.submit %>

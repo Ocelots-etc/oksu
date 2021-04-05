@@ -1,5 +1,5 @@
-Update for Users page
-  <%= form_for @user, url: user_path do |f| %>
+Update for Admins Users page
+  <%= form_for(@user, url: admins_user_path(@user))  do |f| %>
     <%= f.label :name %>
     <%= f.text_field :name %>
     <br />

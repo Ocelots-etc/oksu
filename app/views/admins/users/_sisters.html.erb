@@ -1,0 +1,20 @@
+<ul>
+  <% @users.each do |u| %>
+    <li>
+      <%= link_to u.name, admins_user_path(u.id) %>
+      <br />
+      <% u.appointments.order_by_appt_datetime.each do |a| %>
+        <%= link_to a.location, appointment_path(a) %>
+        <br />
+        <%= a.comments %>
+        <br />
+        <%= a.appt_datetime %>
+        <br />
+        <% end %>
+    </li>
+  <% end %>
+</ul>
+
+<% if current_admin %> 
+<%= button_to "Your Dashboard", admin_dashboard_path, method: :get %>
+<% end %>

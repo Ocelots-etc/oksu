@@ -1,18 +1,33 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Osku</title>
+    <br />
+    <br />
+    <br />
+
+<% if current_user %>
+    <% current_user.errors.full_messages.any? %>
+  <% current_user.errors.full_messages.each do |error_message| %>
+    <%= error_message if current_user.errors.full_messages.first == error_message %> <br />
+  <% end %>
+<% end %>
+
+<% if flash[:notice] %>
+<%= flash[:notice] %>
+<% end %>
+
+
+
+    <h1>Our Sisters' Keepers</h1>
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
+    <%= csrf_meta_tags %>
 
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
   </head>
 
   <body>
-<br />
-<br />
-<br />
+
   <div id="Hello_user">
     <% if logged_in_user? %>
     <span>Hi, <%= current_user.name %>!
@@ -30,9 +45,15 @@
   </div>
 
 
-      
-        <%= yield %>
+
 
       
+        <%= yield %>
+<br />
+
+<br />
+
+
+
     </body>
 </html>

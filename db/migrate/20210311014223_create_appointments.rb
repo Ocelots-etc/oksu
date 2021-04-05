@@ -3,7 +3,7 @@ class CreateAppointments < ActiveRecord::Migration[6.1]
     create_table :appointments do |t|
       t.string :location
       t.text :comments
-      t.datetime :datetime
+      t.datetime :appt_datetime
       t.references :user, null: false, foreign_key: true
       t.references :admin, null: false, foreign_key: true
 

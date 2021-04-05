@@ -1,10 +1,9 @@
+  <h1> Toolkit List </h1>
 
-<h1> Toolkit List </h1>
-
-<%= render partial: "/errors", locals: {obj: @tool} %>
+<%= render partial: "/errors", locals: {obj: @toolkit} %>
 
 <h4> Please complete the following list for Our Sisters' Keepers to better assist you. </h4>
-  <%= form_for @tool  do |f| %>
+  <%= form_for @toolkit, url: admins_user_toolkit_path(@user) do |f| %>
     <%= f.label :legal %>
     <h5> This category covers anything from your recent 
     <br />

@@ -1,0 +1,8 @@
+<% if obj %>
+<div style="color:red">    
+<% obj.errors.full_messages.any? %>
+  <% obj.errors.full_messages.each do |error_message| %>
+    <%= error_message if obj.errors.full_messages.first == error_message %> <br />
+  <% end %>
+  </div>
+<% end %>

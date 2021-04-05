@@ -1,0 +1,25 @@
+<ul>
+
+      <%= link_to @user.name, dashboard_path(@user) %>
+      <br />
+    <li>
+      <%= @user.toolkit.legal %>
+        <br />
+      <%= @user.toolkit.documents %>
+        <br />
+      <%= @user.toolkit.job %>
+        <br />
+      <%= @user.toolkit.housing %>
+        <br />
+      <%= @user.toolkit.financial %>
+        <br />
+      <%= @user.toolkit.childcare %>
+        <br />
+      <%= @user.toolkit.health %>
+    </li>
+
+</ul>
+
+<% if current_admin %> 
+<%= button_to "Your Dashboard", admin_dashboard_path, method: :get %>
+<% end %>

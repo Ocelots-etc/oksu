@@ -1,5 +1,4 @@
-<h1>Sessions#welcome</h1>
-<p>Find me in app/views/sessions/welcome.html.erb</p>
+
 <div class="field">
 <h1> Welcome </h1>
 
@@ -7,19 +6,45 @@
 
      <span>Hi, <%= current_admin.name %>! </span>
      <br />
-     <%= button_to "Your Dashboard", admin_path(current_admin), method: :get %>
+     <br />
+     <%= button_to "Your Dashboard", admin_dashboard_path, method: :get %>
 
   <% elsif logged_in_user? %>
      <span>Hi,  <%= current_user.name %>! </span>
+     <br />
+     <br />
+     <%= button_to "Your Dashboard", dashboard_path, method: :get %>
   <% else %>
-  <h1> Please log in or sign up </h1>  
-  <% end %>
+  <h1> Please log in or sign up </h1>
+  <%= button_to "Login", login_path, method: :get %>
 
-<%= button_to "Login", login_path, method: :get %>
-
-<%= button_to "Sign Up", signup_path, method: :get %>
+<%= button_to "Sign Up", signup_path, method: :get %>  
 
 <%= button_to "Admin Signup", new_admin_path, method: :get %>
 <%= button_to "Admin Login", login_path, method: :get %>
 
+  <% end %>
+<br />
+<br />
+
+
+
+
+
+
+  <div id="Org Info">
+  <br />
+  <br />
+    Phone Number: 
+      <br />
+    
+    Email address:
+    <br />
+    Motto:
+    <br />
+    Logo:
+    
+    <br />
+  </div>
 </div>
+

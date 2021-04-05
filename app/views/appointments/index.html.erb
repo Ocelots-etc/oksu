@@ -2,11 +2,17 @@
 <ul>
   <% @appts.each do |a| %>
     <li>
+      <%= link_to a.user.name, dashboard_path %>
+      <br />
       <%= link_to a.location, appointment_path(a) %>
-      <br>
+      <br />
       <%= a.comments %>
-      <br>
-      <%= a.datetime %>
+      <br />
+      <%= a.appt_datetime %>
     </li>
   <% end %>
 </ul>
+
+<% if current_admin %>
+<%= button_to "Your Dashboard", admin_dashboard_path, method: :get %>
+<% end %>

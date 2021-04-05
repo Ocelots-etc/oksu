@@ -1,0 +1,57 @@
+
+<h1> <%= "Page for your Sister, #{@user.name}" %></h1>
+<%= button_to "Return to Welcome Page", welcome_path, method: :get %>
+<h4>This is the sister's dashboard to view all of their appointments as well as their toolkit.</h4>
+<%= button_to "Edit Sister's Information", edit_admins_user_path(@user), method: :get %>
+
+<h2> Appointments </h2>
+
+
+<%= button_to "Create a new Appointment", new_admins_appointment_path, method: :get %>
+
+<h4> The following is a list of your scheduled appointments: </h4>
+
+ <% @user.appointments.each do |a| %>
+   <br />
+  <%= link_to a.location, appointment_path(a) %>
+   <br />
+  <%= a.appt_datetime %>
+   <br />
+  <%= a.comments %>
+   <br />
+   <br />
+  <% end %>
+   <br />
+   <br />
+
+<h2> Toolkit </h2>
+<% if @user && @user.toolkit != nil %>
+  <label> Legal: </label>
+  <%= @user.toolkit.legal %>
+  <br />
+  <label> Documents: </label>
+  <%= @user.toolkit.documents %>
+  <br />
+  <label> Employment: </label>
+  <%= @user.toolkit.job %>
+  <br />
+  <label> Housing: </label>
+  <%= @user.toolkit.housing %>
+  <br />
+  <label> Financial: </label>
+  <%= @user.toolkit.financial %>
+  <br />
+  <label> Childcare: </label>
+  <%= @user.toolkit.childcare %>
+  <br />
+  <label> Health: </label>
+  <%= @user.toolkit.health %>
+  <br />
+  <%= button_to "Edit Sister's Toolkit", edit_admins_user_toolkit_path(@user), method: :get %>
+  <% else %>
+    <%= button_to "Create a Toolkit", new_admins_user_toolkit_path(@user.id), method: :get %>
+  <% end %>
+
+ <%= button_to "Back to your Dashboard", admin_dashboard_path, method: :get %>
+
+<%= button_to "View Your Toolkit", admins_user_toolkit_path(@user.id), method: :get %>

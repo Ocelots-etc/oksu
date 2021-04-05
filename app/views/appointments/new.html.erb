@@ -1,2 +1,10 @@
-Create a new appointment with <%= @user.name %>
+<% if current_admin %>
+ <%= button_to "Back to your Dashboard", admin_dashboard_path, method: :get %>
+  <% end %>
 <%= render "form" %>
+
+<% if current_admin %>
+ <%= button_to "Back to your Dashboard", admin_dashboard_path, method: :get %>
+ <%elsif current_user %>
+ <%= button_to "Back to your Dashboard", dashboard_path, method: :get %>
+<% end %>

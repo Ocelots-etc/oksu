@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_03_11_014223) do
+ActiveRecord::Schema.define(version: 2021_03_31_011142) do
 
   create_table "admins", force: :cascade do |t|
     t.string "name"
@@ -18,12 +18,13 @@ ActiveRecord::Schema.define(version: 2021_03_11_014223) do
     t.string "password_digest"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.decimal "uid"
   end
 
   create_table "appointments", force: :cascade do |t|
     t.string "location"
     t.text "comments"
-    t.datetime "datetime"
+    t.datetime "appt_datetime"
     t.integer "user_id", null: false
     t.integer "admin_id", null: false
     t.datetime "created_at", precision: 6, null: false
@@ -52,6 +53,7 @@ ActiveRecord::Schema.define(version: 2021_03_11_014223) do
     t.string "password_digest"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.decimal "uid"
   end
 
   add_foreign_key "appointments", "admins"

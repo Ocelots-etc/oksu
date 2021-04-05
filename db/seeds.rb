@@ -7,5 +7,5 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 @user = User.create(name: "Tina", email: "tina@tina.com", password: "12345")
 @admin = Admin.create(name: "Brittany", email: "brittany@brittany.com", password: "12345")
-@appt = Appointment.create(location: "Zoom", comments: "First meeting", datetime: " ", user_id: "1", admin_id: "1")
+@appt = Appointment.create(location: "Zoom", comments: "First meeting", appt_datetime: " ", user_id: "1", admin_id: "1")
 @tool = Toolkit.create(legal: "asdf", documents: "Asdf", job: "asdf", housing: "asdf", financial: "asdf", childcare: "Asdf", health: "ASdf", user_id: "1")

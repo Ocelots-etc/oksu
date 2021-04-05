@@ -14,3 +14,11 @@
 
       <% end %>
       <%= button_to "Return to Welcome Page", welcome_path, method: :get %>
+</div>
+
+<div class="google auth">
+  <%= form_tag('/auth/google_oauth2') do %>
+  <%= submit_tag "Login with Google" %>
+  <% end %>
+
+</div>
